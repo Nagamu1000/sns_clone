@@ -1,0 +1,8 @@
+<h1>投稿編集ページ</h1>
+<% @post.errors.full_messages.each do |message| %>
+    <%= message %>
+<% end %>
+<%= form_tag("/posts/#{@post.id}/update")do %>
+    <textarea name="content"><%= @post.content %></textarea>
+    <input type="submit" value="保存">
+<% end %>

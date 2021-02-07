@@ -1,0 +1,13 @@
+<h1>ユーザー編集ページ</h1>
+<% @user.errors.full_messages.each do |message| %>
+    <%= message %>
+<% end %>
+<%= form_tag("/users/#{@user.id}/update", {multipart: true})do %>
+    <p>ユーザー名</p>
+    <input name="name" value="<%= @user.name%>">
+    <p>メールアドレス</p>
+    <input name="email" value="<%= @user.email%>">
+    <p>画像</p>
+    <input name="image" type="file">
+    <input type="submit" value="編集">
+<% end %>
