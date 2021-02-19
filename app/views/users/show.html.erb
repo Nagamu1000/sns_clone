@@ -1,6 +1,6 @@
 <h1>ユーザー詳細ページ</h1>
 <div class="users-show-item">
-    <img src="<%= "/user_images/#{@user.image_name}" %>">
+    <img class='users-image' src="<%= "/user_images/#{@user.image_name}" %>">
     <h2>名前</h2>
     <%= @user.name %>
     <h2>メールアドレス</h2>
@@ -10,15 +10,23 @@
         <%= @user.created_at %>
     </div>
     <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-        <%= link_to("削除", "/users/#{@user.id}/destroy",{method: "post"}) %>
+        <div class='user-edit'>
+            <%= link_to("アカウントを編集", "/users/#{@user.id}/edit") %>
+        </div>
+        <div class='user-destroy'>
+            <%= link_to("アカウントを削除", "/users/#{@user.id}/destroy",{method: "post"}) %>
+        </div>
     <% end %>
     <h2><%= @user.name %>さんの投稿一覧</h2>
     <% @user.posts.reverse_each do |post| %>
         <div class="posts-index-item">
             <img src="<%= "/user_images/#{post.user.image_name}" %>">
-            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-            <%= link_to(post.content, "/posts/#{post.id}")  %>
+            <div class='post-username'>
+                <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+            </div>
+            <div class='post-content'>
+                <%= link_to(post.content, "/posts/#{post.id}")  %>
+            </div>
         </div>
     <% end %>
     <h3><%= link_to("いいねした投稿を見る", "/users/#{@user.id}/likes") %></h3>

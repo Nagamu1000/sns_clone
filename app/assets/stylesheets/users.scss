@@ -1,3 +1,42 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.users-show-item{
+    margin:40px;
+    .users-image{
+        height: 100px;
+    }
+    .user-edit{
+        background-color: yellowgreen;
+        text-align: center;
+        padding:5px;
+        width:170px;
+        height: 40px;
+        font-size: 20px;
+        margin:40px auto;
+        border-radius: 10px;
+        display: inline-block;
+    }
+    .user-destroy{
+        background-color: rgb(231, 31, 31);
+        text-align: center;
+        padding:5px;
+        width:170px;
+        height: 40px;
+        font-size: 20px;
+        margin:40px auto;
+        border-radius: 10px;
+        display: inline-block;
+    }
+}
+
+.users-index-item{
+    background-color: whitesmoke;
+    padding: 20px;
+    margin:40px auto;
+    width:60%;
+    img{
+        height: 40px;
+    }
+}
+

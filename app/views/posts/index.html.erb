@@ -2,7 +2,11 @@
 <% @posts.each do |post| %>
     <div class="posts-index-item">
         <img src="<%= "/user_images/#{post.user.image_name}" %>">
-        <%= link_to(post.user.name, "/users/#{post.user.id}") %>
-        <%= link_to(post.content, "/posts/#{post.id}")  %>
+        <div class='post-username'>
+            <%= link_to(post.user.name, "/users/#{post.user.id}") %>
+        </div>
+        <div class='post-content'>
+            <%= link_to(post.content, "/posts/#{post.id}")  %>
+        </div>
     </div>
 <% end %>

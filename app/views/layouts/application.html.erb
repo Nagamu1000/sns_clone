@@ -7,13 +7,10 @@
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://kit.fontawesome.com/fa077a558b.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
     <header>
       <% if @current_user %>
         <h1><%= link_to("SNSclone", "/posts/index") %></h1>

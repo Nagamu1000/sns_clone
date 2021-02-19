@@ -1,9 +1,9 @@
 <h1>投稿詳細ページ</h1>
-<div class="post-user-name">
-    <img src="<%= "/user_images/#{@user.image_name}" %>">
-    <%= link_to(@user.name, "/users/#{@user.id}") %>
-</div>
 <div class="posts-show-item">
+    <div class="post-user-name">
+        <img src="<%= "/user_images/#{@user.image_name}" %>">
+        <%= link_to(@user.name, "/users/#{@user.id}") %>
+    </div>
     <%= @post.content %>
     <% if Like.find_by(user_id:@current_user.id, post_id:@post.id) %>
         <%= link_to("/likes/#{@post.id}/destroy", {method:"post"})do %>
@@ -18,7 +18,11 @@
         <%= @post.created_at %>
     </div>
     <% if @post.user_id == @current_user.id %>
-        <%= link_to("編集", "/posts/#{@post.id}/edit") %>
-        <%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %>
+        <div class='post-edit'>
+            <%= link_to("編集", "/posts/#{@post.id}/edit") %>
+        </div>
+        <div class='post-destroy'>
+            <%= link_to("削除", "/posts/#{@post.id}/destroy",{method: "post"}) %>
+        </div>
     <% end %>
 </div>
