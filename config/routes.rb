@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   post "users/:id/update" => "users#update"
   post "users/:id/destroy" => "users#destroy"
   get "users/:id/likes" => "users#likes"
+  get 'users/follow/:user_id' => 'users#follow'
+  get 'users/unfollow/:user_id' => 'users#unfollow'
+  get 'users/follow_list/:user_id' => 'users#follow_list'
+  get 'users/follower_list/:user_id' => 'users#follower_list'
 
   get "login" => "users#login_form"
   post "login" => "users#login"
@@ -18,7 +22,7 @@ Rails.application.routes.draw do
   get "posts/:id" => "posts#show"
   get "posts/:id/edit" => "posts#edit"
   post "posts/:id/update" => "posts#update"
-  post "posts/:id/destroy" => "posts#destroy"
+  get "posts/:id/destroy" => "posts#destroy"
 
   get "likes/:post_id/create" => "likes#create"
   get "likes/:post_id/destroy" => "likes#destroy"

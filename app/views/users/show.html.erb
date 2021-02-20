@@ -1,14 +1,28 @@
 <h1>ユーザー詳細ページ</h1>
 <div class="users-show-item">
     <img class='users-image' src="<%= "/user_images/#{@user.image_name}" %>">
+    <%= @user.follow_count %>
+    <%= link_to "フォロー", {controller: :users,action: :follow_list,user_id: @user.id}, method: :get %>
+    <%= @user.followers_count %>
+    <%= link_to "フォロワー", {controller: :users,action: :follower_list,user_id: @user.id}, method: :get %>
+
+    <% if @current_user.id != @user.id %>
+    <%= render 'follow_form' %>
+    <% end %>
+
+    
     <h2>名前</h2>
     <%= @user.name %>
     <h2>メールアドレス</h2>
     <%= @user.email %>
+
     <div class="user-time">
         <h2>ユーザー作成日時</h2>
         <%= @user.created_at %>
     </div>
+
+    <h3><%= link_to("いいねした投稿を見る", "/users/#{@user.id}/likes") %></h3>
+
     <% if @user.id == @current_user.id %>
         <div class='user-edit'>
             <%= link_to("アカウントを編集", "/users/#{@user.id}/edit") %>
@@ -17,6 +31,7 @@
             <%= link_to("アカウントを削除", "/users/#{@user.id}/destroy",{method: "post"}) %>
         </div>
     <% end %>
+
     <h2><%= @user.name %>さんの投稿一覧</h2>
     <% @user.posts.reverse_each do |post| %>
         <div class="posts-index-item">
@@ -29,5 +44,5 @@
             </div>
         </div>
     <% end %>
-    <h3><%= link_to("いいねした投稿を見る", "/users/#{@user.id}/likes") %></h3>
+
 </div>
